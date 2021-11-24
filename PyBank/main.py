@@ -9,6 +9,7 @@ months=0
 monthcrt=0
 monthprev=0
 profits=0
+changestotal=0
 changes=[]
 
 with open(path, newline="") as csvfile:
@@ -20,9 +21,11 @@ with open(path, newline="") as csvfile:
         monthcrt += int(row[1])
         changes.append(monthcrt-monthprev)
         monthprev=int(row[1])
+
 print("Financial Analysis")
 print("-------------------") 
 print("Total Months: "+str(months))  
+print("Total Profit/Losses: "+str(profits))  
 print("Average Change: $" ) 
 
 
