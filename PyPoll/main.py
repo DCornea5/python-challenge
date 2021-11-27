@@ -32,10 +32,10 @@ with open(pypollpath, newline="") as csvfile:
         elif row[2] =="O'Tooley":
             Otooleyvotes +=1    
 
-    Correyper=(Correyvotes/totalvotes)*100
-    Khanper=(Khanvotes/totalvotes)*100
-    Liper=(Livotes/totalvotes)*100
-    Otooleyper=(Otooleyvotes/totalvotes)*100
+    Correyper=format((Correyvotes/totalvotes)*100,".3f")
+    Khanper=format((Khanvotes/totalvotes)*100,".3f")
+    Liper=format((Livotes/totalvotes)*100,".3f")
+    Otooleyper=format((Otooleyvotes/totalvotes)*100,".3f")
 
 
 
