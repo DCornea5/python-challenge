@@ -1,15 +1,14 @@
-#	The total number of votes cast 3521001
+# 	PyPoll Challenge
+#   The total number of votes cast 
 #	A complete list of candidates who received votes
 #	The percentage of votes each candidate won
 #	The total number of votes each candidate won
-#	The winner of the election based on popular vote •	Winner: Khan
+#	The winner of the election based on popular vote 
 
 import os
 import csv
 from typing import List
 pypollpath=os.path.join("Resources","election_data.csv")
-
-
 
 totalvotes=0
 with open(pypollpath, newline="") as csvfile:
@@ -19,6 +18,7 @@ with open(pypollpath, newline="") as csvfile:
     Khanvotes=0
     Livotes=0
     Otooleyvotes=0
+    popularvote=0
 
     list=["Voter ID", "County", "Candidate"]
     for row in csvreaderp:
@@ -37,18 +37,28 @@ with open(pypollpath, newline="") as csvfile:
     Liper=format((Livotes/totalvotes)*100,".3f")
     Otooleyper=format((Otooleyvotes/totalvotes)*100,".3f")
 
-
-
     candidateslist= ["Correy",
     "Khan",
     "Li",
     "Otooley"]
             
-    voteslist= ["Correyvotes", 
-    "Khanvotes",
-    "Livotes",
-    "Otooleyvotes"]     
-
+    voteslist= [Correyvotes, 
+    Khanvotes,
+    Livotes,
+    Otooleyvotes]     
+    
+    dictionary={}
+    for candidate in candidateslist:
+        for votes in voteslist:
+            dictionary[candidate]=votes
+            voteslist.remove(votes)
+            break
+    
+    max=max(dictionary.values())
+    for candidate, votes in dictionary.items():
+        if votes==max:
+            Winner=candidate
+        
 print("Election Results\n")  
 print("-----------------------\n") 
 print("Total Votes:"+str(totalvotes)+"\n") 
@@ -56,8 +66,8 @@ print("-----------------------\n")
 print(f"Khan: {Khanper}% ({Khanvotes})")
 print(f"Coorey: {Correyper}% ({Correyvotes})")
 print(f"Li: {Liper}% ({Livotes})")
-print(f"Otooley: {Otooleyper}% ({Otooleyvotes})")
-print(f"Winner: ")
+print(f"Otooley: {Otooleyper}% ({Otooleyvotes})\n")
+print(f"Winner: {Winner}")
 print("-----------------------\n") 
 
 Votes=os.path.join("Election Results.txt")
@@ -68,9 +78,9 @@ with open(Votes,"w") as file:
     file.write("-----------------------\n") 
     file.write("Total Votes:"+str(totalvotes)+"\n") 
     file.write("-----------------------\n")
-    file.write(f"Khan: {Khanper}% ({Khanvotes})\n")
-    file.write(f"Coorey: {Correyper}% ({Correyvotes})\n")
-    file.write(f"Li: {Liper}% ({Livotes})\n")
+    file.write(f"Khan: {Khanper}% ({Khanvotes}")
+    file.write(f"Coorey: {Correyper}% ({Correyvotes}")
+    file.write(f"Li: {Liper}% ({Livotes})")
     file.write(f"Otooley: {Otooleyper}% ({Otooleyvotes})\n")
-    file.write(f"Winner: \n")
+    file.write(f"Winner: + {Winner}")
     file.write("-----------------------\n") 
