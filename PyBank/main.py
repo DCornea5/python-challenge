@@ -31,20 +31,31 @@ with open(path, newline="") as csvfile:
     months=months+1
     monthprev=int(first_row[1])
     profits += int(first_row[1])
+    greatestincp = int(first_row[1])-monthprev
     for row in csvreader:
         months += 1
         profits += int(row[1])
         mnthcrt=int(row[1])
         changes.append(mnthcrt-monthprev)
         monthprev=int(row[1])
+       
         #look for the greatest increase and decrease
         if int(row[1]) > greatestinc:
             greatestinc=int(row[1])
             greatestmnthinc=row[0]
-            
+           
         if int(row[1])< greatestdec:
             greatestdec=int(row[1])
             greatestmnthdec=row[0]
+
+        
+             
+        
+
+
+
+        
+
 
     averagechanges=(sum(changes))/len(changes)
         
