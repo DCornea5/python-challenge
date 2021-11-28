@@ -76,7 +76,7 @@ print(f"Winner: {Winner}")
 print("-----------------------\n") 
 
 # prepare and export a text file with the results
-Votes=os.path.join("Election Results.txt")
+Votes=os.path.join("AnalysisPyPoll","Election Results.txt")
 
 with open(Votes,"w") as file:
 
