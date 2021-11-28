@@ -25,23 +25,28 @@ with open(path, newline="") as csvfile:
     csvreader=csv.reader(csvfile, delimiter=",")
     csvheader=next(csvreader)
     #loop through the csv file to calculate the total months and total profits
+    first_row = next(csvreader)
+    first_row[0]
+    first_row[1]
+    months=months+1
+    monthprev=int(first_row[1])
+    profits += int(first_row[1])
     for row in csvreader:
         months += 1
         profits += int(row[1])
         mnthcrt=int(row[1])
-        changes.append(monthcrt-monthprev)   
-        monthprev=int(row[1]) 
-           
+        changes.append(mnthcrt-monthprev)
+        monthprev=int(row[1])
         #look for the greatest increase and decrease
         if int(row[1]) > greatestinc:
             greatestinc=int(row[1])
             greatestmnthinc=row[0]
-           
+            
         if int(row[1])< greatestdec:
             greatestdec=int(row[1])
             greatestmnthdec=row[0]
 
-
+    averagechanges=(sum(changes))/len(changes)
         
 #print the results in terminal     
 print("Financial Analysis")
